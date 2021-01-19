@@ -269,6 +269,9 @@ def main():
             user_input=input("Input guess number : ")
             if not(is_digit(user_input)):
                 print('Wrong Input, Input again')
+            elif int(user_input) == 0:
+                end_flag=True
+                break
             else:
                 strikes,balls=get_strikes_or_ball(random_number,user_input)
                 print(f'Strikes : {strikes} , Balls : {balls}')
