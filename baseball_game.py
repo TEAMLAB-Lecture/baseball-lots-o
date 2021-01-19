@@ -257,42 +257,42 @@ def is_no(one_more_input):
 def main():
     print("Play Baseball")
     user_input = 999
-    end_flag=False
+    random_number = str(get_not_duplicated_three_digit_number())
+    print("Random Number is : ", random_number)
+    # ===Modify codes below=============
+    # 위의 코드를 포함하여 자유로운 수정이 가능함
+
+    end_game=False
+    new_game=False
     while True:
-        if end_flag: break
+        if new_game: # 새로운 게임 시작일 경우 
+            random_number = str(get_not_duplicated_three_digit_number())
+            print("Random Number is : ", random_number)
 
-        random_number = str(get_not_duplicated_three_digit_number())
-        print("Random Number is : ", random_number)
-        # ===Modify codes below=============
-        # 위의 코드를 포함하여 자유로운 수정이 가능함
-        while True:
-            user_input=input("Input guess number : ")
-            if not(is_digit(user_input)):
-                print('Wrong Input, Input again')
-            elif int(user_input) == 0:
-                end_flag=True
-                break
-            else:
-                strikes,balls=get_strikes_or_ball(random_number,user_input)
-                print(f'Strikes : {strikes} , Balls : {balls}')
-                if strikes == 3:
+        user_input=input('Input guess number : ')
+        if user_input == '0':  # 예시에서 0을 입력받을 경우 게임이 끝난다. 
+            break
+        elif not(is_validated_number(user_input)): # 잘못된 입력을 받았을 경우 
+            print('Wrong Input, Input again')
+        else: # 제대로 된 입력을 받았을 경우 
+            strikes,balls=get_strikes_or_ball(random_number,user_input)
+            print(f'Strikes : {strikes} , Balls : {balls}')
+            if strikes == 3:
+                while True:
                     option=input('You win, one more(Y/N) ?')
-                    if is_no(option):
-                        end_flag=True
+                    if is_yes(option):
+                        # 새로운 게임 시작 
+                        new_game=True
                         break
-                    else:
+                    elif is_no(option):
+                        # 게임 끝 
+                        end_game=True
                         break
-
-                        
-        
-
-
-
-                    
-
-
-
-
+                    else : # 잘못된 입력
+                        print('Wrong Input, Input again')
+                if end_game:
+                    break
+                
     # ==================================
     print("Thank you for using this program")
     print("End of the Game")
