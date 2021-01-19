@@ -270,9 +270,9 @@ def main():
             print("Random Number is : ", random_number)
 
         user_input=input('Input guess number : ')
-        if user_input == '0':  # 예시에서 0을 입력받을 경우 게임이 끝난다. 
-            break
-        elif not(is_validated_number(user_input)): # 잘못된 입력을 받았을 경우 
+        # if user_input == '0':  # 예시에서 0을 입력받을 경우 게임이 끝난다. 
+        #     break
+        if not(is_validated_number(user_input)): # 잘못된 입력을 받았을 경우 
             print('Wrong Input, Input again')
         else: # 제대로 된 입력을 받았을 경우 
             strikes,balls=get_strikes_or_ball(random_number,user_input)
