@@ -268,16 +268,17 @@ def main():
         if new_game: # 새로운 게임 시작일 경우 
             random_number = str(get_not_duplicated_three_digit_number())
             print("Random Number is : ", random_number)
+            new_game=False
 
         user_input=input('Input guess number : ')
-        # if user_input == '0':  # 예시에서 0을 입력받을 경우 게임이 끝난다. 
-        #     break
-        if not(is_validated_number(user_input)): # 잘못된 입력을 받았을 경우 
+        if user_input == '0':  # 사용자가 게임 중 0을 입력하게 되면 게임 종료
+            break
+        elif not(is_validated_number(user_input)): # 잘못된 입력을 받았을 경우 
             print('Wrong Input, Input again')
         else: # 제대로 된 입력을 받았을 경우 
             strikes,balls=get_strikes_or_ball(random_number,user_input)
             print(f'Strikes : {strikes} , Balls : {balls}')
-            if strikes == 3:
+            if strikes == 3:  # 정확한 숫자 입력!
                 while True:
                     option=input('You win, one more(Y/N) ?')
                     if is_yes(option):
