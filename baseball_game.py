@@ -60,7 +60,7 @@ def is_between_100_and_999(user_input_number):
     
 
     # ==================================
-    return True if user_input_number >= 100 and user_input_number<1000 else False
+    return True if int(user_input_number) >= 100 and int(user_input_number)<1000 else False
 
 
 def is_duplicated_number(three_digit):
@@ -250,7 +250,6 @@ def is_no(one_more_input):
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당
 
-    result = None
     # ==================================
     return True if one_more_input.lower() =='n' or one_more_input.lower()=='no' else False
 
